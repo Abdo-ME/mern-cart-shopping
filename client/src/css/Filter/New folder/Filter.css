@@ -1,5 +1,4 @@
 .filter-wrapper {
-  width: 30%;
   background-color: #fff;
   border: 1px solid #c0c0c0;
   display: flex;
@@ -13,7 +12,7 @@
 }
 .filter-wrapper > div {
   padding: 5px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 .filter-wrapper select {
   display: block;

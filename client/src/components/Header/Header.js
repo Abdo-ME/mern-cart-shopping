@@ -1,13 +1,12 @@
-import React from 'react';
-import "../../css/Header/Header.css";
-import { words } from "../../words"
-
+import React from 'react'
+import "../../css/Header/header.css"
+import {words} from "../../words"
 function Header() {
-    return (
-        <header>
-            {words.headerTitle}
-        </header>
-    )
+  return (
+    <header>
+       {words.headerTitle}
+    </header>
+  )
 }
 
 export default Header

@@ -1,36 +1,41 @@
 import React, { useState } from 'react'
-import "../../css/Products/Products.css"
-import ProductModal from './ProductModal';
+import "../../css/Products/products.css"
+import ProductModal from './ProductModal'
 
-function Products(props) {
-    const [product, setProduct] = useState("");
 
-    const openModal = (product) => {
+function Products({ products,handleAddToCart,setCart }) {
+    const [product, setProduct] = useState("")
+    const [isOpen, setIsOpen] = useState(false)
+
+    const openModel = (product) => {
         setProduct(product)
-    }
+        setIsOpen(true)
+    };
 
-    const closeModal = () => {
-        setProduct(false)
-    }
+    // render Products
+    
+    const productsItems = products.map(product => (
+        <div key={product.id} className="product-item">
+            <a onClick={()=>{openModel(product)}} href="#">
+            <img src={product.imageUrl} alt={product.item} />
+            </a>   
+                <div className="product-desc">
+                    <p>{product.title}</p>
+                    <span>{product.price}$</span>
+                </div>
+                <button onClick={()=>handleAddToCart(product)}>Add to Cart</button>
+        
+        </div>
 
+
+   
+    ))
     return (
         <div className="products-wrapper"> 
-            {props.products.map(product => (
-                <div className="product-item" key={product.id}> 
-                    <a href="#" onClick={() => openModal(product)}>
-                        <img src={product.imageUrl} alt={product.title} />
-                    </a>
-                    <div className="product-desc">
-                        <p>{product.title}</p>
-                        <span>${product.price}</span>
-                    </div>
-                    <button onClick={() => props.addToCart(product)}> Add To Cart </button>
-                </div> 
-            ))} 
-
-            <ProductModal product={product} closeModal={closeModal} />
-        </div> 
-    )
+            {productsItems}
+            <ProductModal product={product} isOpen={isOpen} setIsOpen ={setIsOpen} />
+        </div>
+  )
 }
 
 export default Products
