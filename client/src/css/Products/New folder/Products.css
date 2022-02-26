@@ -21,7 +21,7 @@
   display: block;
   width: 100%;
   border: 0;
-  background-color: #2a5ea5;
+  background: #2a5ea5;
   color: #fff;
   padding: 7px;
   border-radius: 6px;
@@ -31,7 +31,6 @@
   display: block;
   width: 40%;
   margin: 20px auto;
-  max-height: 300px;
 }
 .product-info p {
   color: #2a5ea5;
@@ -40,11 +39,10 @@
   text-align: center;
 }
 
-.icon-times {
+.close-icon {
   position: absolute;
-  right: 100px;
-  color: red;
-  font-size: 40px;
-  font-weight: 800;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
+  font-size: 20px;
 }
