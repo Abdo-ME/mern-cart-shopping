@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import "../../css/Products/products.css"
+import "../../css/Products/Products.css"
+// import Bounce from 'react-reveal/Bounce'
 import ProductModal from './ProductModal'
 
 
@@ -31,10 +32,13 @@ function Products({ products,handleAddToCart,setCart }) {
    
     ))
     return (
+      
         <div className="products-wrapper"> 
             {productsItems}
             <ProductModal product={product} isOpen={isOpen} setIsOpen ={setIsOpen} />
-        </div>
+            </div>
+    
+            
   )
 }
 
