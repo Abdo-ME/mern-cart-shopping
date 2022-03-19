@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../css/Filter/filter.css"
+import "../../css/Filter/Filter.css"
 function Filter({ size,sort,filterBySize,filterByOrder,productsNumber }) {
   return (
       <div className="filter-wrapper">
