@@ -11,7 +11,6 @@ function ProductModal({isOpen,setIsOpen,product}) {
                     <p>{product.desc }</p>
                     <p>{product.price }$</p>
                 </div>
-             
             </Modal>
   )
 }
