@@ -88,7 +88,7 @@ function App() {
       <Header/>
       <main>
         <div className="wrapper">
-            <Products products= {products}  handleAddToCart={handleAddToCart} setCartItems={setCartItems}  />
+            <Products  handleAddToCart={handleAddToCart} setCartItems={setCartItems}  />
           <Filter size={size} filterBySize={filterBySize} filterByOrder={filterByOrder} sort={sort} productsNumber={products.length} />
          
         </div>

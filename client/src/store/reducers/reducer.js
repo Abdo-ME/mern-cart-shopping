@@ -1,4 +1,6 @@
-const reducer = ((state={},action)=>{
-    return state
+// this file to Combine all Reducer togather
+import { combineReducers } from "redux";
+import { productsReducer } from "./productsReducer";
+export default combineReducers({
+    products: productsReducer,
 })
-export default reducer
