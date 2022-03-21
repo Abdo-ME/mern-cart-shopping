@@ -27,38 +27,3 @@ export const productsReducer = (state= {}, action) => {
 
 
 
-
-
-// import { FETCH_PRODUCTS,FILTER_ORDER, FILTER_SIZE} from "../actions/types";
-
-
-// export const productsReducer = (state = {}, action) => {
-    
-//     switch (action.type) {
-      
-//     case FETCH_PRODUCTS:
-//         // console.log(action.data);
-//             return {
-//                 products: action.data,
-//                 filterProducts: action.data.products,
-//                 sort: action.data.sort
-//             }
-        
-//         case FILTER_SIZE:
-//             console.log("actived");
-//         return {
-//             ...state,
-//             filterProducts: action.data.products,
-//             size : action.data.size
-//         }
-        
-//         case FILTER_ORDER:
-//         return {
-//             ...state
-//             , filterProducts: action.data.products,
-//             sort : action.data.sort
-//         }
-//     default:
-//             return state;
-//     }
-// }
