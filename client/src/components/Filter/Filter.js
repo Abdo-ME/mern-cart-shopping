@@ -1,14 +1,29 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import "../../css/Filter/Filter.css"
-function Filter({ size,sort,filterBySize,filterByOrder,productsNumber }) {
+import { filteredSort, filteredSize } from '../../store/actions/products'
+
+function Filter({ filteredSort, filteredSize, filteredProducts, products, size, sort }) {
+  
+  const handleFilterBySize = (e) => {
+    let value = e.target.value;
+    filteredSize(filteredProducts, value,products);
+  }
+  const handleFilterBySort = (e) => {
+    let value = e.target.value;
+    filteredSort(filteredProducts, value);
+  }
+  
+
   return (
-      <div className="filter-wrapper">
+    <>
+      {filteredProducts &&
+        <div className="filter-wrapper">
           <h2 className="filter-title">Filter</h2>
-        <div className="products-Number">Number of Products : {productsNumber} </div>
+        <div className="products-Number">Number of Products : {filteredProducts.length} </div>
             <div className="filter-by-size">
               <span>Filter</span>
-                <select value={size}  onChange={filterBySize} className="filter-select">
-                  <option value="ALL" defaultValue>ALL</option>
+                <select value={size}  onChange={handleFilterBySize} className="filter-select">
+                  <option value="ALL">ALL</option>
                   <option value="XS">XS</option>
                   <option value="S">S</option>
                   <option value="M">M</option>
@@ -19,7 +34,7 @@ function Filter({ size,sort,filterBySize,filterByOrder,productsNumber }) {
             </div>
             <div className="filter-by-sort">
               <span>Order</span>
-                <select  value={sort} onChange={filterByOrder} className="filter-select">
+                <select  value={sort} onChange={handleFilterBySort} className="filter-select">
                   <option value="latest" >Latest</option>
                   <option value="lowest">Lowest</option>
                   <option value="highest">Highest</option>
@@ -27,8 +42,16 @@ function Filter({ size,sort,filterBySize,filterByOrder,productsNumber }) {
                 </select>
             </div>
         
-    </div>
+    </div>}
+    </>
   )
 }
 
-export default Filter
+export default connect((state) => {
+  return {
+    products: state.products.products,
+    filteredProducts: state.products.filterProducts,
+    size: state.products.size,
+    sort: state.products.sort,
+  }
+},{filteredSize,filteredSort})(Filter)

@@ -38,7 +38,6 @@ function App() {
       const cloneProducts = [...products];
 
       let newProducts = cloneProducts.sort((a, b) => {
-        console.log(e.target.value);
         const order = e.target.value;
 
         if (order === "lowest") {

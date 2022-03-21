@@ -5,18 +5,19 @@ import { connect } from "react-redux";
 import { fetchProducts } from '../../store/actions/products';
 
         
-function Products({ products,handleAddToCart,setCart}) {
-    const [product, setProduct] = useState("")
-    const [isOpen, setIsOpen] = useState(false)
+function Products({fetchProducts, products,handleAddToCart,setCart}) {
+    const [product, setProduct] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const openModel = (product) => {
         setProduct(product)
         setIsOpen(true)
     };
 
-    // render Products
-    
-const productsItems = products&&products.length?products.map(product => (    
+
+
+    ////////// render Products
+const productsItems = products?products.length===0?(<h4>ther is no Productions</h4>): products.map(product => (    
     <div key={product.id} className="product-item">
         <a onClick={() => { openModel(product) }} href="#">
             <img src={product.imageUrl} alt={product.item} />
@@ -45,6 +46,6 @@ useEffect(() => {
 
 export default connect((state) => {
     return {
-        products: state.products.products
+        products: state.products.filterProducts
     }
-},fetchProducts)(Products)
+},{fetchProducts,})(Products)
