@@ -1,8 +1,11 @@
 import "../../css/Cart/cart.css"
 import React, { useState } from 'react'
 import Checkout from "../CheckoutForm/Checkout"
+import { connect } from "react-redux";
+import { removeProductCart } from "../../store/actions/cart";
 
-function Cart({ cart, handleRemoveProduct }) {
+
+function Cart({ productsCart, handleRemoveProduct,removeProductCart }) {
     const [showForm, setShowForm] = useState(false);
     const [value, setValue] = useState("");
     const handleChange = (e) => {
@@ -17,39 +20,45 @@ function Cart({ cart, handleRemoveProduct }) {
             email: value.email
         }
         
-        console.log(order);
 
     }
-  return (
-      <div className="cart-wrapper">
-          <div className="cart-title">
-              <p>{cart.length? `you have ${cart.length} product${cart.length ===1?"":"s"} `: "Your Cart is Empty" } </p>
-          </div>
-          {cart.map(product => (
-              <div key={product.id} className="cart-info">
-              <img src={product.imageUrl} alt={product.title} />
+return (
+    <div className="cart-wrapper">
+        <div className="cart-title">
+            <p>{productsCart.length? `you have ${productsCart.length} product${productsCart.length ===1?"":"s"} `: "Your Cart is Empty" } </p>
+        </div>
+        {productsCart.map(product => (
+            <div key={product.id} className="cart-info">
+            <img src={product.imageUrl} alt={product.title} />
 
-              <div className="cart-desc">
-                  <span>{ product.title}</span>    
-              <span>quntity : {product.qty} </span>    
-              <span>price : {product.price}$ </span>    
-              </div>
-              <button onClick={()=>handleRemoveProduct(product.id)}>Remove</button>
+            <div className="cart-desc">
+                <span>{ product.title}</span>    
+            <span>quntity : {product.qty} </span>    
+            <span>price : {product.price}$ </span>    
+            </div>
+            <button onClick={()=>removeProductCart(product._id,productsCart)}>Remove</button>
 
-          </div>
-          ))}
-          {cart.length > 0 && (
-               <div className="cart-footer">
-               <div className="total">Total : ${cart.reduce( (acc, p) => {
-                   return acc + p.price*p.qty
-               }  , 0)} </div>
-                  <button onClick={() => setShowForm(true)}> select products </button>
-           </div>
-          )}
-          {/* {checkout form} */}
-        <Checkout showForm={showForm} setShowForm={setShowForm} handlecheckout={handlecheckout} handleChange={handleChange} />
-    </div>
-  )
+        </div>
+        ))}
+        {productsCart.length > 0 && (
+            <div className="cart-footer">
+            <div className="total">Total : ${productsCart.reduce( (acc, p) => {
+                return acc + p.price*p.qty
+            }  , 0)} </div>
+                <button onClick={() => setShowForm(true)}> select products </button>
+        </div>
+        )}
+        {/* {checkout form} */}
+    <Checkout showForm={showForm} setShowForm={setShowForm} handlecheckout={handlecheckout} handleChange={handleChange} />
+</div>
+)
 }
 
-export default Cart
+export default connect((state) => {
+    
+    return {
+
+        productsCart: state.cart.cartItems
+
+    }
+},{removeProductCart})(Cart)

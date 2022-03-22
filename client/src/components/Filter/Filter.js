@@ -6,7 +6,7 @@ function Filter({ filteredSort, filteredSize, filteredProducts, products, size, 
   
   const handleFilterBySize = (e) => {
     let value = e.target.value;
-    filteredSize(filteredProducts, value,products);
+    filteredSize(products, value);
   }
   const handleFilterBySort = (e) => {
     let value = e.target.value;

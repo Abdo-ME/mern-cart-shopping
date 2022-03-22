@@ -1,10 +1,9 @@
-import { FETCH_PRODUCTS, FILTER_ORDER, FILTER_SIZE } from "./types"
+import {  FETCH_PRODUCTS, FILTER_ORDER, FILTER_SIZE } from "./types"
 
+/////////////Fetch Products
 
 export const fetchProducts = () => {
     return dispatch => {
-
-
         fetch("/api/products")
             .then(res => res.json())
             .then(data => {
@@ -16,7 +15,7 @@ export const fetchProducts = () => {
     }
 }
 
-//Filter By Order
+/////////////////////// Filter By Order
 export const filteredSort = (products, value) => {
         
     return dispatch => {
@@ -40,19 +39,16 @@ export const filteredSort = (products, value) => {
     }
 
 }
-//Filter By Size
+/////////////Filter By Size
 
-export const filteredSize = (products, value,allproducts) => {
-    // console.log(products);
-    
+export const filteredSize = (products, value) => {
     return dispatch => {
-        let cloneProducts = [...products];
-        let newProducts = cloneProducts.filter(p => p.sizes.includes(value))
+        let newProducts = products.filter(p => p.sizes.includes(value))
         dispatch({
             type: FILTER_SIZE,
             data: {
                 size: value,
-                products: value === "ALL"? allproducts:newProducts
+                products: value === "ALL"? products:newProducts
             }
         })
     }   

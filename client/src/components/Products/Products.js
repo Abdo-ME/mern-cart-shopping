@@ -3,9 +3,10 @@ import "../../css/Products/Products.css";
 import ProductModal from './ProductModal';
 import { connect } from "react-redux";
 import { fetchProducts } from '../../store/actions/products';
+import { addToCart } from '../../store/actions/cart';
 
         
-function Products({fetchProducts, products,handleAddToCart,setCart}) {
+function Products({fetchProducts,addToCart, products}) {
     const [product, setProduct] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +14,6 @@ function Products({fetchProducts, products,handleAddToCart,setCart}) {
         setProduct(product)
         setIsOpen(true)
     };
-
 
 
     ////////// render Products
@@ -26,7 +26,7 @@ const productsItems = products?products.length===0?(<h4>ther is no Productions</
             <p>{product.title}</p>
             <span>{product.price}$</span>
         </div>
-        <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+        <button onClick={() => addToCart(product)}>Add to Cart</button>
     </div>
 
 )):"Loading";
@@ -48,4 +48,4 @@ export default connect((state) => {
     return {
         products: state.products.filterProducts
     }
-},{fetchProducts,})(Products)
+},{fetchProducts,addToCart})(Products)
