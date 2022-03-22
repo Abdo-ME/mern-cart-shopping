@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FILTER_ORDER, FILTER_SIZE } from "./types"
+import {  FETCH_PRODUCTS, FILTER_ORDER, FILTER_SIZE } from "./types"
 
 /////////////Fetch Products
 
