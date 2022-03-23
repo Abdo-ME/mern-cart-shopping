@@ -3,7 +3,7 @@ import React from 'react'
 import "../../css/CheckoutForm/checkout.css"
 import Input from '../Input/Input'
 
-function Checkout({showForm,setShowForm,handlecheckout,handleChange}) {
+function Checkout({showForm,setShowForm,handlecheckout,handleChange,setIsOpen,setOrder}) {
 return (
     <>
         {showForm && (
@@ -15,7 +15,7 @@ return (
                 <Input name={"email"} label ={"Email"} type={"email"} handleChange ={handleChange} />
                 
                 <div>
-                    <button  type="submit">checkout</button>
+                    <button  type="submit" onClick={()=>{setIsOpen(true);setOrder("")}}>checkout</button>
                 </div>
                 </form>
                 
