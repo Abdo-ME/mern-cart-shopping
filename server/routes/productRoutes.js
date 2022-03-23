@@ -1,4 +1,4 @@
-const express =require("express")
+const express =require("express");
 const Product = require("../models/productModel")
 const router = express.Router();
 
@@ -16,6 +16,7 @@ router.delete("/api/products/:id", async (req, res) => {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     res.send(deletedProduct)
 });
+
 
 
 module.exports = router;
