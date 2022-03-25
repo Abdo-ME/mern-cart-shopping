@@ -1,19 +1,10 @@
 import { connect } from 'react-redux'
 import "../../css/Filter/Filter.css"
 import { filteredSort, filteredSize } from '../../store/actions/products'
+import { handleFilterBySize, handleFilterBySort } from './filterFunction'
 
 function Filter({ filteredSort, filteredSize, filteredProducts, products, size, sort }) {
   
-  const handleFilterBySize = (e) => {
-    let value = e.target.value;
-    filteredSize(products, value);
-  }
-  const handleFilterBySort = (e) => {
-    let value = e.target.value;
-    filteredSort(filteredProducts, value);
-  }
-  
-
   return (
     <>
       {filteredProducts &&
@@ -22,7 +13,7 @@ function Filter({ filteredSort, filteredSize, filteredProducts, products, size, 
         <div className="products-Number">Number of Products : {filteredProducts.length} </div>
             <div className="filter-by-size">
               <span>Filter</span>
-                <select value={size}  onChange={handleFilterBySize} className="filter-select">
+                <select value={size}  onChange={  handleFilterBySize (filteredSize,products)} className="filter-select">
                   <option value="ALL">ALL</option>
                   <option value="XS">XS</option>
                   <option value="S">S</option>
@@ -34,7 +25,7 @@ function Filter({ filteredSort, filteredSize, filteredProducts, products, size, 
             </div>
             <div className="filter-by-sort">
               <span>Order</span>
-                <select  value={sort} onChange={handleFilterBySort} className="filter-select">
+                <select  value={sort} onChange={handleFilterBySort(filteredSort,filteredProducts)} className="filter-select">
                   <option value="latest" >Latest</option>
                   <option value="lowest">Lowest</option>
                   <option value="highest">Highest</option>

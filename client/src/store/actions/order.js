@@ -1,4 +1,4 @@
-import { ADD_ORDER, CLEAR_CART, REMOVE_ORDER } from "./types"
+import { ADD_ORDER, CLEAR_CART} from "./types"
 
 
 export const addOrder = (order) => {

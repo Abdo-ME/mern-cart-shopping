@@ -1,15 +1,12 @@
 // import React, { useEffect } from 'react';
 import Modal from "react-modal"
 import { connect } from 'react-redux';
-// import { clearCart } from '../../store/actions/cart';
 
-
-
-const OrderModal = ( {isOpen,order,productsCart,setIsOpen,setpordsnt}) => {
+const OrderModal = ( {isOpen,order,productsCart,setIsOpen,setShowForm}) => {
 
     return (
         <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} ariaHideApp={false} >
-        <span className='icon-times' onClick={()=>setIsOpen(false)}>&times; </span>
+            <span className='icon-times' onClick={() => { setIsOpen(false); setShowForm(false)}}>&times; </span>
             
             <div className="order-info">
                 <p className="alert-success"> Order Done  Success</p>
@@ -24,7 +21,7 @@ const OrderModal = ( {isOpen,order,productsCart,setIsOpen,setpordsnt}) => {
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td>${ order&&productsCart.reduce((a,p)=>p.price+a,0)}</td>
+                        <td>${ order&&productsCart.reduce((a,p)=>p.price*p.qty+a,0)}</td>
                     </tr>
                     <tr>
                         <td>Selected Products:</td>
@@ -37,7 +34,6 @@ const OrderModal = ( {isOpen,order,productsCart,setIsOpen,setpordsnt}) => {
                     </tr>
                 </table>
             </div>
-          
         </Modal> 
 )
 }
