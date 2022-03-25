@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./types";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from "./types";
 
 // ////////////////Add to Cart
 export const addToCart = (product) => {    
@@ -8,46 +8,24 @@ export const addToCart = (product) => {
 
         const cartItems = getState().cart.cartItems;
         const cartProductClone = [...cartItems];
-        
-        
-        /////////////////////////////
+     
         let num=0;
-
         const checkproduct = cartProductClone.some(i =>i._id === product._id )
-
         if (checkproduct) {
             num = cartProductClone.filter(p => p._id === product._id)[0].qty++
         } else {
             num = 1;
             cartProductClone.push({ ...product, qty: num })
         }
-
-
-
-        /////////////////////////////
-        
-
-
-
-    // let isProductExist = false;
-    // cartProductClone.forEach(p => {
-    // if (p._id === product._id) {
-    //     p.qty++
-    //     isProductExist = true;
-    // }
-    // })
-    // if (!isProductExist) {
-    //     cartProductClone.push({ ...product, qty: 1,isProductExist:true });
-    // }
-    dispatch({
-        type: ADD_TO_CART,
-        data: { cartItems: cartProductClone }
-    });
-    localStorage.setItem("cartItems",JSON.stringify(cartProductClone))
+        dispatch({
+            type: ADD_TO_CART,
+            data: { cartItems: cartProductClone }
+        });
+        localStorage.setItem("cartItems",JSON.stringify(cartProductClone))
 }
 }
 
-/////Remove Products  from Cart
+/////Remove Product  from Cart
 export const removeProductCart = (id) => {
     
     return (dispatch, gatstate) => {
@@ -61,5 +39,14 @@ export const removeProductCart = (id) => {
             cartItems : newCartProducts
         })
     localStorage.setItem("cartItems",JSON.stringify(newCartProducts))
+    }
+}
+
+///////////Clear products cart
+export const clearCart = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CLEAR_CART
+        })
     }
 }
