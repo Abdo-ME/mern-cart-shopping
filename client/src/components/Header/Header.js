@@ -4,7 +4,7 @@ import {words} from "../../words"
 function Header() {
   return (
     <header>
-       {words.headerTitle}
+      {words.headerTitle}
     </header>
   )
 }

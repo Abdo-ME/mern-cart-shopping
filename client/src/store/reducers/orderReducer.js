@@ -6,8 +6,6 @@ export const orderReducer = (state={}, action) => {
             return {order: action.data.order}
         case REMOVE_ORDER:
             return {order: false}
-      
-    
         default:
             return state;
     }

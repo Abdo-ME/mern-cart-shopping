@@ -18,7 +18,6 @@ export const productsReducer = (state= {}, action) => {
             sort: action.data.sort,
             filterProducts: action.data.products
         }   
-      
         default:
             return state
     }
