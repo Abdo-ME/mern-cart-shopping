@@ -1,9 +1,13 @@
-import React from 'react';
+// import React, { useEffect } from 'react';
 import Modal from "react-modal"
+import { connect } from 'react-redux';
+// import { clearCart } from '../../store/actions/cart';
 
 
-const OrderModal = ( {isOpen,order,productsCart,setIsOpen}) => {
-  return (
+
+const OrderModal = ( {isOpen,order,productsCart,setIsOpen,setpordsnt}) => {
+
+    return (
         <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} ariaHideApp={false} >
         <span className='icon-times' onClick={()=>setIsOpen(false)}>&times; </span>
             
@@ -12,15 +16,15 @@ const OrderModal = ( {isOpen,order,productsCart,setIsOpen}) => {
                 <table>
                     <tr>
                         <td>Name:</td>
-                        <td>{ order.name}</td>
+                        <td>{ order&&order.name}</td>
                     </tr>
                     <tr>
                         <td>Email:</td>
-                        <td>${ order.email}</td>
+                        <td>{ order&&order.email}</td>
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td>{ productsCart.reduce((a,p)=>p.price+a,0)}</td>
+                        <td>${ order&&productsCart.reduce((a,p)=>p.price+a,0)}</td>
                     </tr>
                     <tr>
                         <td>Selected Products:</td>
@@ -33,8 +37,15 @@ const OrderModal = ( {isOpen,order,productsCart,setIsOpen}) => {
                     </tr>
                 </table>
             </div>
+          
         </Modal> 
 )
 }
 
-export default OrderModal
+
+export default connect((state) => {
+    return {
+        productsCart: state.cart.cartItems,
+        order: state.order.order
+    }
+},{})(OrderModal)

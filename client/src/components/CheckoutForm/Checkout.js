@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import { addOrder } from "../../store/actions/order";
 
 import "../../css/CheckoutForm/checkout.css"
 import Input from '../Input/Input'
 
-function Checkout({showForm,setShowForm,handlecheckout,handleChange,setIsOpen,setOrder}) {
-return (
+function Checkout({clearCart,setShowForm,setIsOpen,addOrder}) {
+    const [value, setValue] = useState("");
+    const handleChange = (e) => {
+        setValue((prevValue) => (
+            { ...prevValue, [e.target.name]: e.target.value })
+        )
+    } 
+    const handlecheckout = (e) => {
+        e.preventDefault();
+        const order = {
+            name: value.name,
+            email: value.email
+        }
+        addOrder(order)      
+        setIsOpen(true);
+     
+        
+    }
+
+    
+    return (
     <>
-        {showForm && (
+        {(
             <div className="checkout-form" >
                 
             <span className="close-icon" onClick={()=>setShowForm(false) }>&times;</span>
@@ -15,7 +36,7 @@ return (
                 <Input name={"email"} label ={"Email"} type={"email"} handleChange ={handleChange} />
                 
                 <div>
-                    <button  type="submit" onClick={()=>{setIsOpen(true);setOrder("")}}>checkout</button>
+                <button type="submit">checkout</button>
                 </div>
                 </form>
                 
@@ -26,4 +47,8 @@ return (
 )
 }
 
-export default Checkout
+export default connect((state) => {
+    return {
+    
+    }
+},{addOrder})(Checkout)
