@@ -1,0 +1,32 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  font-size: 24px;
+  background-color: rgba(197, 188, 191, 0.787);
+  margin-bottom: 20px;
+}
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.navbar nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.navbar nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  border: 0;
+  background-color: #2a5ea5;
+  padding: 7px;
+  border-radius: 6px;
+}
+.navbar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}

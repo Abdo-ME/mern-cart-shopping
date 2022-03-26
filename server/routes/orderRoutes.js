@@ -6,7 +6,6 @@ const router = express.Router();
 
 // Order routs
 router.get("/api/orders",async (req, res) => {
-    console.log(req.body)
     const orders = await Order.find();
     res.send(orders)
 })

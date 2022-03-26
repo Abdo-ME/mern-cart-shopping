@@ -1,4 +1,4 @@
-import { ADD_ORDER, CLEAR_CART} from "./types"
+import { ADD_ORDER, CLEAR_CART, FETCH_ORDERS} from "./types"
 
 
 export const addOrder = (order) => {
@@ -25,4 +25,18 @@ return async(dispatch) => {
         
        
 }
+}
+
+export const fetchOrder = () => {
+    return async dispatch => {
+        await fetch('/api/orders')
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: FETCH_ORDERS,
+                    data: {orders:data}
+                })
+            })
+        
+    }
 }
