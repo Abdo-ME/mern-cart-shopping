@@ -10,4 +10,5 @@ export const CLEAR_CART = "CLEAR_CART";
 
 // Order
 export const ADD_ORDER = "ADD_ORDER";
-export const REMOVE_ORDER = "ADD_ORDER";
+export const REMOVE_ORDER = "REMOVE_ORDER";
+export const FETCH_ORDERS = "FETCH_ORDERS";

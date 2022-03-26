@@ -1,0 +1,37 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  font-size: 24px;
+  //   display: flex;
+  //   align-items: center;
+
+  background-color: rgba(197, 188, 191, 0.787);
+  margin-bottom: 20px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: block;
+
+        border: 0;
+        background-color: #2a5ea5;
+
+        padding: 7px;
+        border-radius: 6px;
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.orders table {
+  border: 1px solid #c0c0c0;
+  width: 100%;
+}
+.orders table tr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #c0c0c0;
+  width: 100%;
+}
+.orders table tr:first-of-type {
+  background-color: #268fec;
+  height: 50px;
+  color: white;
+}
+.orders table tr:last-of-type {
+  border-bottom: 0;
+}
+.orders table tr:nth-child(even) {
+  background-color: rgba(238, 221, 199, 0.609);
+}
+.orders table tr th,
+.orders table tr td {
+  text-align: center;
+  width: 30%;
+}
+.orders table tr th:nth-of-type(2),
+.orders table tr td:nth-of-type(2) {
+  border-left: 2px solid #c0c0c0;
+  border-right: 2px solid #c0c0c0;
+  border-color: #c0c0c0;
+}
+.orders table tr td {
+  padding: 10px;
+}
